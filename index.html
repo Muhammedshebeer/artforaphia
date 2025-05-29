@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>WizardZ - Digital Marketing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+        }
+
+        button {
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            padding: 30px 20px;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+
+        }
+
+        .top-bar nav a {
+            margin-left: 30px;
+            font-size: 14px;
+        }
+
+        /*.top-bar nav a:last-child {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }*/
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero-text button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hero-image img {
+            width: 320px;
+            max-width: 100%;
+        }
+
+        .partners {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 40px 0;
+        }
+
+        .partners-slider img {
+            height: 250px;
+            margin: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .partners-slider-wrapper button {
+            display: none;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-title {
+            color: #000;
+            font-weight: bold;
+            font-size: 14px;
+            background-color: #D8FF73;
+            display: inline-block;
+            padding: 4px 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .service-box {
+            border-radius: 14px;
+            padding: 24px;
+            border: 2px solid #000;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-box.dark {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .service-box h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .service-box p {
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .cta {
+            background-color: #f6f6f6;
+            padding: 60px 20px;
+            text-align: center;
+
+            margin-top: 60px;
+            max-width: 1320px;
+        }
+
+        .cta h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 14px;
+            margin-bottom: 24px;
+            color: #333;
+        }
+
+        .cta button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .case-study-title {
+            font-size: 14px;
+            background-color: #C6FF56;
+            padding: 4px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .case {
+            background-color: #000;
+            color: #fff;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .case a {
+            display: inline-block;
+            margin-top: 12px;
+            color: #D8FF73;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            margin-top: 60px;
+            background-color: #fff;
+            border-radius: 14px;
+            padding: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .gallery {
+            padding: 60px 20px;
+            /*background-color: #fafafa;*/
+            text-align: center;
+
+        }
+
+        .gallery-title {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .gallery-grid img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .see-more-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 720px) {
+            
+            .partners {
+                display: none;
+            }
+
+            .partners-slider-wrapper {
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+                padding: 20px;
+            }
+
+            .partners-slider {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+            }
+
+            .partners-slider img {
+                width: 150px;
+                height: auto;
+                flex: 0 0 auto;
+                object-fit: contain;
+            }
+
+            .slide-btn {
+                background-color: rgba(0, 0, 0, 0.5);
+                border: none;
+                color: #fff;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 20px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+
+            .slide-btn.prev {
+                left: 10px;
+            }
+
+            .slide-btn.next {
+                right: 10px;
+            }
+
+            .hero-image {
+                position: relative;
+                left: 16px;
+            }
+
+            .top-bar {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+
+            }
+
+            .top-bar {
+                text-align: center;
+                position: relative;
+                right: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <div>
+                <h2>ArtForAphia</h2>
+            </div>
+            <div>
+                <nav class="menu" id="menu">
+                    <a href="#">ABOUT</a>
+                    <a href="#">SERVICES</a>
+                    <a href="#">GALLERY</a>
+                    <a href="#">CONTACT</a>
+                    <!-- <a href="#">BLOG</a> -->
+                </nav>
+            </div>
+        </div>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Navigating the digital landscape for <span style="color: #C6FF56;"> success.</span></h1>
+                <p>Our digital marketing agency helps businesses grow by increasing visibility, driving traffic, and
+                    converting leads into customers using SEO, PPC, social media, and email marketing.</p>
+                <button>Book a consultation</button><br><br>
+            </div>
+            <div class="hero-image">
+                <img src="images\logo.png" alt="Marketing graphic">
+            </div>
+        </div><br><br><br>
+        <div class="partners-slider-wrapper">
+            <button class="slide-btn prev">&#10094;</button>
+            <div class="partners-slider">
+                <img src="images/photo_2025-05-29_00-51-20.jpg" />
+                <img src="images/image.png" />
+                <img src="images/photo_2025-05-29_00-51-44.jpg" />
+                <!-- <img src="images/photo_2025-05-29_00-51-57.jpg" /> -->
+                <!-- <img src="images/photo_2025-05-29_00-52-04.jpg" /> -->
+            </div>
+            <button class="slide-btn next">&#10095;</button>
+        </div>
+
+    </header>
+
+    <section>
+        <div class="services-title">Services</div>
+        <p style="margin-bottom: 20px; color: #333; font-size: 14px;">Our digital marketing agency offers the range of
+            services to meet your needs. Choose from SEO, PPC, social media, email marketing, and more.</p>
+        <div class="services-grid">
+
+            <div class="service-box dark">
+                <h3>Pay per click advertising</h3>
+                <p>Learn more</p>
+            </div>
+            <div class="service-box">
+                <h3>Search engine optimization</h3>
+                <p>Learn more</p>
+            </div>
+            <div class="service-box dark">
+                <h3>Social media marketing</h3>
+                <p>Learn more</p>
+            </div>
+            <div class="service-box">
+                <h3>E-mail marketing</h3>
+                <p>Learn more</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h3 class="gallery-title">Our Work</h3>
+        <div class="gallery-grid">
+            <img src="images\image.png" alt="Gallery Image 1">
+            <img src="images\photo_2025-05-29_00-51-20.jpg" alt="Gallery Image 2">
+            <img src="images\photo_2025-05-29_00-51-44.jpg" alt="Gallery Image 3">
+            <img src="images\photo_2025-05-29_00-51-57.jpg" alt="Gallery Image 4">
+            <img src="images\photo_2025-05-29_00-52-04.jpg" alt="Gallery Image 5">
+            <img src="https://via.placeholder.com/300x200" alt="Gallery Image 6">
+        </div><br><br>
+        <div class="see-more-container">
+            <button class="see-more-btn">See More</button>
+        </div>
+    </section>
+
+
+
+    <section class="cta">
+        <h3>Let’s make things happen</h3>
+        <p>Contact us today to learn how our digital marketing services can help your business grow and succeed online.
+        </p>
+        <button>Get your free proposal</button>
+
+        <section class="contact-form">
+            <h3>Contact Us</h3>
+            <form action="#" method="POST">
+                <div style="display: flex; gap:30px;">
+                    <div>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </section>
+
+
+
+    <section>
+        <div class="case-study-title">Case study</div>
+        <p style="font-size: 14px; margin-bottom: 20px; color: #333;">Explore Real-Life Examples of Our Proven Digital
+            Marketing Success through Our Case Studies.</p>
+        <div class="case-studies">
+            <div class="case">
+                <p>Full-service marketing for a SaaS startup doubled leads in 3 months.</p>
+                <a href="#">Learn more →</a>
+            </div>
+            <div class="case">
+                <p>SEO and SEM combined helped local business grow 50% traffic.</p>
+                <a href="#">Learn more →</a>
+            </div>
+            <div class="case">
+                <p>For ecommerce client, email flows raised ROI by 3x in 6 months.</p>
+                <a href="#">Learn more →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: #000; color: #fff; padding: 20px 20px; text-align: center; margin-top: 60px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h3 style="font-size: 20px; margin-bottom: 20px;">Follow Us</h3>
+            <div style="font-size: 24px; margin-bottom: 20px;">
+                <a href="#" style="margin: 0 10px; color: #fff;">&#x1F426; <!-- Twitter --></a>
+                <a href="#" style="margin: 0 10px; color: #fff;">&#x1F465; <!-- LinkedIn --></a>
+                <a href="#" style="margin: 0 10px; color: #fff;">&#x1F4F7; <!-- Instagram --></a>
+                <a href="#" style="margin: 0 10px; color: #fff;">&#x1F4FA; <!-- YouTube --></a>
+            </div>
+            <p style="font-size: 14px; color: #bbb;">&copy; 2025 WizardZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+
+        const slider = document.querySelector('.partners-slider');
+        const prev = document.querySelector('.slide-btn.prev');
+        const next = document.querySelector('.slide-btn.next');
+
+        prev.addEventListener('click', () => {
+            slider.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        next.addEventListener('click', () => {
+            slider.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+
+</html>
